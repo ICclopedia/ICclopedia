@@ -1,6 +1,6 @@
-update=Sun 14 Jun 2020 11:39:31 AM EDT
+update=22/05/2015 07:44:53
 version=1
-last_client=eeschema
+last_client=kicad
 [general]
 version=1
 RootSch=
@@ -30,13 +30,4 @@ NetIExt=net
 [eeschema]
 version=1
 LibDir=
-[schematic_editor]
-version=1
-PageLayoutDescrFile=
-PlotDirectoryName=/media/camilo/data/workspaces/icclopedia/simple_mos_current_mirror/
-SubpartIdSeparator=0
-SubpartFirstId=65
-NetFmtName=
-SpiceAjustPassiveValues=0
-LabSize=50
-ERC_TestSimilarLabels=1
+[eeschema/libraries]
