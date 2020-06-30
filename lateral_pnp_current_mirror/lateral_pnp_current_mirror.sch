@@ -1,0 +1,131 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Text Label 4700 2600 0    60   ~ 0
+n_pos
+Wire Wire Line
+	4500 3250 4500 2600
+Wire Wire Line
+	4400 2600 4500 2600
+Connection ~ 4500 2600
+Wire Wire Line
+	5400 3650 5400 3450
+Wire Wire Line
+	4500 3650 4800 3650
+Wire Wire Line
+	4800 3450 4800 3650
+Connection ~ 4950 3650
+Wire Wire Line
+	4500 3450 4500 3650
+Connection ~ 4800 3650
+Wire Wire Line
+	5050 2900 4800 2900
+Text Label 4950 3650 0    60   ~ 0
+0
+Text Label 4800 2900 0    60   ~ 0
+n1
+Text Label 5300 2950 0    60   ~ 0
+n2
+Wire Wire Line
+	4950 3750 4950 3650
+Wire Wire Line
+	4500 2600 5200 2600
+Wire Wire Line
+	4950 3650 5400 3650
+Wire Wire Line
+	4800 3650 4950 3650
+$Comp
+L Sources_Power:V-PLUS-SUPPLY #PWR?
+U 1 1 5EFBA7ED
+P 4300 2600
+F 0 "#PWR?" H 4300 2750 50  0001 C BNN
+F 1 "V+" V 4300 2677 50  0000 L CNN
+F 2 "" H 4300 2600 60  0001 C CNN
+F 3 "" H 4300 2600 60  0001 C CNN
+	1    4300 2600
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Transistors_Bipolar_BJT:PNP-SPLIT-COLL-GENERIC Q1
+U 1 1 5EFBC2DD
+P 5100 2900
+F 0 "Q1" H 5025 2950 50  0000 C CNN
+F 1 "split_coll_lat_pnp1" H 4850 3050 50  0001 C CNN
+F 2 "" H 5300 3000 50  0000 C CNN
+F 3 "" H 5100 2900 50  0000 C CNN
+F 4 "c1,c2,b,e" H 5225 2925 60  0001 L CNN "Spice_Node_Sequence"
+	1    5100 2900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5200 2950 5400 2950
+Wire Wire Line
+	5400 2950 5400 3250
+Wire Wire Line
+	4800 2900 4800 3150
+Wire Wire Line
+	5200 3000 5200 3150
+Wire Wire Line
+	5200 3150 4800 3150
+Connection ~ 4800 3150
+Wire Wire Line
+	4800 3150 4800 3250
+Wire Wire Line
+	5200 2800 5200 2600
+$Comp
+L Sources_Power:GND-Earth-REF #PWR?
+U 1 1 5EFBE88B
+P 4950 3850
+F 0 "#PWR?" H 4925 3675 50  0001 C CNN
+F 1 "GND-Earth-REF" H 4950 3750 50  0001 C CNN
+F 2 "" H 4950 3850 50  0001 C CNN
+F 3 "" H 4950 3850 50  0001 C CNN
+	1    4950 3850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Sources_Signal:I-IND-DC I1
+U 1 1 5EFBF0CF
+P 4800 3350
+F 0 "I1" H 4903 3396 50  0000 L CNN
+F 1 "50uA" H 4903 3305 50  0000 L CNN
+F 2 "" H 4475 3350 60  0001 C CNN
+F 3 "" H 4475 3350 60  0001 C CNN
+	1    4800 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Sources_Signal:V-IND-DC V1
+U 1 1 5EFBF6F5
+P 4500 3350
+F 0 "V1" H 4603 3396 50  0000 L CNN
+F 1 "5V" H 4603 3305 50  0000 L CNN
+F 2 "" H 4250 3350 60  0001 C CNN
+F 3 "" H 4250 3350 60  0001 C CNN
+	1    4500 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Sources_Signal:V-IND-DC V2
+U 1 1 5EFBFEA6
+P 5400 3350
+F 0 "V2" H 5503 3396 50  0000 L CNN
+F 1 "4.29V" H 5503 3305 50  0000 L CNN
+F 2 "" H 5150 3350 60  0001 C CNN
+F 3 "" H 5150 3350 60  0001 C CNN
+	1    5400 3350
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC
