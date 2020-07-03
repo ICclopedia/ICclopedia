@@ -1,4 +1,4 @@
-* Simple BJT Current Mirror NPN
+* Wilson Current Mirror Simulation Netlist 
 
 .INCLUDE ../device_parameter_libraries/bipolar_20v_process.spice
 
@@ -6,9 +6,10 @@
 * dev <nets>          <values>
 * ------------------------------
 V1    n_pos 0         5V		
-I1    n_pos n1        50uA		
-XQ1   n1    n1 0 0    npn1		
-XQ2   n2    n1 0 0    npn1		
-V2    n2    0         0.6655033V		
+I1    n_pos n3        50uA		
+XQ1   n3    n1 0  0   npn1	
+XQ2   n1    n1 0  0   npn1
+XQ3   n2    n3 n1 0   npn1
+V2    n2    0         1V		
 
 .END

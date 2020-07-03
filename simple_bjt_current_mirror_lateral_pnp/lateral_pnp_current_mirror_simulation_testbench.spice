@@ -1,6 +1,6 @@
 Lateral PNP Current Mirror
 
-.INCLUDE lateral_pnp_current_mirror_simulation_netlist.spice
+.INCLUDE simple_bjt_current_mirror_lateral_pnp_simulation_netlist.spice
 
 * Interactive simulation main entry *
 .CONTROL
@@ -10,14 +10,14 @@ shell mkdir -p results
 cd results
 
 * Generic prefix for our output files
-set generic_prefix = 'lateral_pnp_current_mirror_simulation'
+set generic_prefix = 'simple_bjt_current_mirror_lateral_pnp_simulation'
 
 echo  '* Operating point analysis: Current match '
 
 OP                      
 print all               
 
-* Output current over constant input current (with 1V load): should be 1 for best match.
+* Output current over constant input current (with constant load): should be 1 for best match.
 print (v2#branch/50e-06)
 
 echo
