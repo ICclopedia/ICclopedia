@@ -1,0 +1,22 @@
+* Four Transistor Current Mirror Simulation Netlist 
+
+* ---
+* Subcircuits and Model parametters
+* ---
+* Use our montecarlo-ready custom subcircuit model.
+.INCLUDE bipolar_20v_process_npn_montecarlo.spice
+
+* ---
+* Netlist: Circuit Elements (Devices)
+* ---
+* dev <nets>          <values>
+* ------------------------------
+V1    n_pos 0         5V		
+I1    n_pos n3        50uA		
+XQ1   n4    n1 0  0   npn1		
+XQ2   n1    n1 0  0   npn1	
+XQ3   n2    n3 n1 0   npn1
+XQ4   n3    n3 n4 0   npn1
+V2    n2    0         1.331681V		
+
+.END
