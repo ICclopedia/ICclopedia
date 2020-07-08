@@ -1,0 +1,14 @@
+* Simple NMOS Current Mirror
+
+.INCLUDE ../device_parameter_libraries/cmos_ptm_asu_130nm_tt.spice
+
+* Circuit Elements: Devices
+* dev <nets>        <values>
+* --------------------------
+V1    n_pos 0       1.3V		
+I1    n_pos n1      50uA		
+V2    n2    0       0.6302654V
+M1    n1    n1 0 0  nmos w=5u l=2u 
+M2    n2    n1 0 0  nmos w=5u l=2u 
+
+.END

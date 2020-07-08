@@ -1,6 +1,6 @@
 Lateral PNP Current Mirror
 
-.INCLUDE simple_bjt_current_mirror_lateral_pnp_simulation_netlist.spice
+.INCLUDE simulation_netlist.spice
 
 * Interactive simulation main entry *
 .CONTROL
@@ -10,7 +10,7 @@ shell mkdir -p results
 cd results
 
 * Generic prefix for our output files
-set generic_prefix = 'simple_bjt_current_mirror_lateral_pnp_simulation'
+set generic_prefix = 'simulation'
 
 echo  '* Operating point analysis: Current match '
 

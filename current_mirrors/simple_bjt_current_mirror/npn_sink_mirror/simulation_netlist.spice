@@ -1,6 +1,6 @@
 * Simple BJT Current Mirror NPN
 
-.INCLUDE ../device_parameter_libraries/bipolar_20v_process.spice
+.INCLUDE ../../../device_parameter_libraries/bipolar_20v_process.spice
 
 * Circuit Elements: Devices
 * dev <nets>          <values>

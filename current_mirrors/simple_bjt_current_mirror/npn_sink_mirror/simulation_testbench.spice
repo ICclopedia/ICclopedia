@@ -1,6 +1,6 @@
 Simple BJT Current Mirror NPN
 
-.INCLUDE simple_bjt_current_mirror_npn_simulation_netlist.spice
+.INCLUDE simulation_netlist.spice
 
 * Interactive simulation main entry *
 * Note: which plotter are we using? 
@@ -14,7 +14,7 @@ Simple BJT Current Mirror NPN
 shell mkdir -p results 
 cd results
 * Generic prefix for our output files
-set generic_prefix = 'simple_bjt_current_mirror_npn_simulation'
+set generic_prefix = 'simulation'
 
 echo  '* Operating point analysis: Nominal Current match '
 

@@ -1,4 +1,4 @@
-update=Fri 29 Sep 2017 11:24:36 AM JST
+update=Fri 03 Jul 2020 06:58:32 PM EDT
 version=1
 last_client=eeschema
 [general]
@@ -37,10 +37,10 @@ LibName3=Transistors_Bipolar_BJT
 [schematic_editor]
 version=1
 PageLayoutDescrFile=
-PlotDirectoryName=/media/camilo/data/workspaces/academia/self_study/aic_1-analog_integrated_circuits/lab_assignments/3_current_mirrors/7_four_transistor_current_mirror/
+PlotDirectoryName=/media/camilo/data/workspaces/icclopedia/four_transistor_modified_wilson_bjt_current_mirror_npn/
 SubpartIdSeparator=0
 SubpartFirstId=65
 NetFmtName=
-SpiceForceRefPrefix=0
-SpiceUseNetNumbers=0
+SpiceAjustPassiveValues=0
 LabSize=60
+ERC_TestSimilarLabels=1
