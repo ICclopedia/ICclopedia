@@ -1,0 +1,53 @@
+Transistors characterization NMOS transistor simulation testbench
+
+.INCLUDE ./simulation_netlist.spice
+
+* Interactive simulation main entry *
+.CONTROL
+
+* Make a directory for our output simulation files and switch to it
+shell mkdir -p results 
+cd results/
+* Generic prefix for our output files
+set generic_prefix = 'simulation'
+
+*echo
+*echo '*Printing relevant transistor DC parameters table'
+*show m : gm,gmbs,gds,id,vgs,vds,vbs,vth,vdsat
+
+echo 
+echo '*Performing DC analysis sweep: '
+
+save all @m1[gm] @m1[gmbs] @m1[gds] @m1[id] @m1[vgs] @m1[vds] @m1[vbs] @m1[vth] @m1[vdsat]
+
+* For each transistor length, sweep:
+*   - vgs from 0.1 to 1.3V in 0.05v, and for each Vgs value:
+*       - Sweep Drain voltage from 0v to 1.3v in 0.05v increments.
+foreach m_len 130n 250n 500n 750n 1u 2u 3u 5u 10u
+    alter @M1[L] = $m_len
+    DC Vds 0V 1.3V 0.05V Vgs 0.1V 1.3V 0.05V Vsb 0V 1.3V 0.1V
+end
+
+* Graph properties
+set gnuplot_terminal = 'eps'
+
+* Plotting Ids vs Vgs for different Vgs traces
+setscale nd ; set our plot scale (i.e. x axis to the nd vector)
+setcs xlabel = 'Drain to Source Voltage (V)'
+setcs ylabel = 'Drain Current (mA)'
+setcs title = 'DC Analysis: Drain Current Output vs Drain to Source Voltage' 
+set filename = {$generic_prefix}{'_dc_analysis'}
+gnuplot $filename (-Vds#branch*1e+03) title $title xlabel $xlabel ylabel $ylabel 
+
+* Plotting gm vs Vgs for different Vgs traces
+
+
+echo '* Writing all simulation data to a textfile'
+
+set filetype=ascii
+set filename = {$generic_prefix}{'_results.raw'}
+write $filename
+* back to main directory
+cd ../
+
+.ENDC

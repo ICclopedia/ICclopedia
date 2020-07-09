@@ -1,0 +1,6 @@
+.title KiCad schematic
+M1 nd ng 0 nb L=130n W=2u M=5
+Vds nd 0 1.3V
+Vgs ng 0 1.3V
+Vsb 0 nb 1.3V
+.end
