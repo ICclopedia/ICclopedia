@@ -2,8 +2,6 @@
 
 .INCLUDE ../../device_parameter_libraries/cmos_ptm_asu_130nm_tt.spice
 
-.PARAM length=130n width=1u mult=5
-
 * Circuit Elements: Devices
 * dev <nets>        <values>
 * --------------------------

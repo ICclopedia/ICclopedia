@@ -11,25 +11,36 @@ cd results/
 * Generic prefix for our output files
 set generic_prefix = 'simulation'
 
-*echo
-*echo '*Printing relevant transistor DC parameters table'
-*show m : gm,gmbs,gds,id,vgs,vds,vbs,vth,vdsat
+echo '----'
+echo '*Performing DC analysis sweep: Id vs. Vds for different Vgs bias'
+echo '----'
+let vds_start = 0
+let vds_end = 1.3
+let vds_increment = 0.05
+let vds_length=((vds_end-vds_start)/vds_increment)+1
 
+let vgs_start = 0.1
+let vgs_end = 1.3
+let vgs_increment = 0.1
+let vgs_length=((vgs_end-vgs_start)/vgs_increment)+1
+
+save all @m1[vdsat]
+DC Vds $&vds_start $&vds_end $&vds_increment Vgs $&vgs_start $&vgs_end $&vgs_increment 
+let vdsat = @m1[vdsat]
+reshape vdsat [$&vgs_length][$&vds_length]
+let ngvec = ng
+reshape ngvec [$&vgs_length][$&vds_length]
+
+echo 'Vdsat values for each Vgs'
 echo 
-echo '*Performing DC analysis sweep: '
-
-save all @m1[gm] @m1[gmbs] @m1[gds] @m1[id] @m1[vgs] @m1[vds] @m1[vbs] @m1[vth] @m1[vdsat]
-
-* For each transistor length, sweep:
-*   - vgs from 0.1 to 1.3V in 0.05v, and for each Vgs value:
-*       - Sweep Drain voltage from 0v to 1.3v in 0.05v increments.
-foreach m_len 130n 250n 500n 750n 1u 2u 3u 5u 10u
-    alter @M1[L] = $m_len
-    DC Vds 0V 1.3V 0.05V Vgs 0.1V 1.3V 0.05V Vsb 0V 1.3V 0.1V
+let index = 0
+while index < vgs_length
+    let vgs_point=ngvec[index][26]
+    let vdsat_point=vdsat[index][26]
+    echo "At Vgs: $&vgs_point V, the Vdsat(measured at vds=Vdd): $&vdsat_point V"
+    echo
+    let index=index+1
 end
-
-* Graph properties
-set gnuplot_terminal = 'eps'
 
 * Plotting Ids vs Vgs for different Vgs traces
 setscale nd ; set our plot scale (i.e. x axis to the nd vector)
@@ -37,15 +48,109 @@ setcs xlabel = 'Drain to Source Voltage (V)'
 setcs ylabel = 'Drain Current (mA)'
 setcs title = 'DC Analysis: Drain Current Output vs Drain to Source Voltage' 
 set filename = {$generic_prefix}{'_dc_analysis'}
+set gnuplot_terminal = 'eps'
 gnuplot $filename (-Vds#branch*1e+03) title $title xlabel $xlabel ylabel $ylabel 
 
-* Plotting gm vs Vgs for different Vgs traces
+echo '* Writing DC transfer characteristics data to a textfile'
+set filetype=ascii
+set filename = {$generic_prefix}{'_dc_analysis.raw'}
+write $filename
 
+echo '----'
+echo '*Performing transistor parameters sweep: transistor parameters vs Vgs'
+echo '----'
+
+* Plot y vs xscale
+set xscale="ng"
+
+let vgs_start = 0.05
+let vgs_end = 1.3
+let vgs_increment = 0.05
+let vgs_length=((vgs_end-vgs_start)/vgs_increment)+1
+
+* Store first DC parameters (needs to be done prior to sim)
+* then lumped AC capacitance parameters (to ground)
+* then relative AC capacitance parameters among terminals
+save all @m1[gm] @m1[gmbs] @m1[gds] @m1[id] @m1[vgs] @m1[vds] @m1[vbs] @m1[vth] @m1[vdsat]
++        @m1[cgg] @m1[cdd] @m1[css] @m1[cbb]
++        @m1[cgs] @m1[cgd] @m1[cgb]
++        @m1[cdg] @m1[cds] @m1[cdb]
++        @m1[csg] @m1[csd] @m1[csb]
+
+* For each transistor length, sweep:
+*   - vgs from 0.05 to 1.3V in 0.05v
+*foreach m_l $&m_lsize
+foreach m_l 130n 180n 250n 350n 500n 700n 1u 1.5u 2u 3u
+    alter @M1[L] = $m_l
+    DC Vgs $&vgs_start $&vgs_end $&vgs_increment 
+    $ Calculate important transistor design parameters afterwards
+    let vth=@m1[vth][vgs_length-1]
+    print vth
+    let veff=@m1[vgs]-@m1[vth]
+    let gmid=@m1[gm]/@m1[id]
+    let gmw=@m1[gm]/(@m1[w]*1e6)        ;per um
+    let ao=20*log10(@m1[gm]/@m1[gds])   ;in dB
+    let ft=(@m1[gm]/(@m1[cgg]))
+    let fc=(@m1[gm]/(@m1[cdd]))
+    let fom=gmid*ft
+    $ Update secscale for the current plot
+    setscale $xscale
+end
+
+echo '----'
+echo 'Performing transistor parameters sweep'
+echo '----'
+echo "Plotting gm/id vs $xscale"
+setcs xlabel = "$xscale"
+setcs ylabel = 'gm/Id transconductor current efficiency (S/A)' 
+setcs title = "gm/Id vs. $xscale"
+set filename = {$generic_prefix}{'_gmid_analysis'}
+gnuplot $filename dc11.gmid dc10.gmid dc9.gmid dc8.gmid dc7.gmid dc6.gmid dc5.gmid dc4.gmid dc3.gmid dc2.gmid 
++    title $title xlabel $xlabel ylabel $ylabel 
+
+echo "Plotting gm/w vs $xscale"
+setcs xlabel = "$xscale"
+setcs ylabel = 'gm/W transconductor area efficiency (S/um)'
+setcs title = "gm/W vs. $xscale"
+set filename = {$generic_prefix}{'_gmw_analysis'}
+gnuplot $filename dc11.gmw dc10.gmw dc9.gmw dc8.gmw dc7.gmw dc6.gmw dc5.gmw dc4.gmw dc3.gmw dc2.gmw 
++    title $title xlabel $xlabel ylabel $ylabel 
+
+echo "Plotting ao vs $xscale"
+setcs xlabel = "$xscale"
+setcs ylabel = 'ao transconductor intrinsic gain (dB)'
+setcs title = "ao vs. $xscale"
+set filename = {$generic_prefix}{'_ao_analysis'}
+gnuplot $filename dc11.ao dc10.ao dc9.ao dc8.ao dc7.ao dc6.ao dc5.ao dc4.ao dc3.ao dc2.ao 
++    title $title xlabel $xlabel ylabel $ylabel 
+
+echo "Plotting Ft  vs $xscale"
+setcs xlabel = "$xscale"
+setcs ylabel = 'Ft transconductor intrinsic gain (MHz)'
+setcs title = "Ft vs. $xscale"
+set filename = {$generic_prefix}{'_ft_analysis'}
+gnuplot $filename ylog dc11.ft dc10.ft dc9.ft dc8.ft dc7.ft dc6.ft dc5.ft dc4.ft dc3.ft dc2.ft 
++    title $title xlabel $xlabel ylabel $ylabel 
+
+echo "Plotting Fc  vs $xscale"
+setcs xlabel = "$xscale"
+setcs ylabel = 'Fc transconductor intrinsic gain (MHz)'
+setcs title = "Fc vs. $xscale"
+set filename = {$generic_prefix}{'_fc_analysis'}
+gnuplot $filename dc11.fc dc10.fc dc9.fc dc8.fc dc7.fc dc6.fc dc5.fc dc4.fc dc3.fc dc2.fc 
++    title $title xlabel $xlabel ylabel $ylabel 
+
+echo "Plotting FOM  vs $xscale"
+setcs xlabel = "$xscale"
+setcs ylabel = 'FOM: gmid x Ft' 
+setcs title = "FOM vs. $xscale"
+set filename = {$generic_prefix}{'_fom_analysis'}
+gnuplot $filename dc11.fom dc10.fom dc9.fom dc8.fom dc7.fom dc6.fom dc5.fom dc4.fom dc3.fom dc2.fom 
++    title $title xlabel $xlabel ylabel $ylabel 
 
 echo '* Writing all simulation data to a textfile'
-
 set filetype=ascii
-set filename = {$generic_prefix}{'_results.raw'}
+set filename = {$generic_prefix}{'_transistor_parameters.raw'}
 write $filename
 * back to main directory
 cd ../

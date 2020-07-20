@@ -1,4 +1,4 @@
-update=Fri 03 Jul 2020 06:58:32 PM EDT
+update=Mon 20 Jul 2020 02:41:13 PM EDT
 version=1
 last_client=eeschema
 [general]
@@ -29,15 +29,11 @@ version=1
 NetIExt=net
 [eeschema]
 version=1
-LibDir=/media/camilo/data/workspaces/kicad_common/cat_library/generic_schematic_symbols
-[eeschema/libraries]
-LibName1=Sources_Power
-LibName2=Sources_Signal
-LibName3=Transistors_Bipolar_BJT
+LibDir=
 [schematic_editor]
 version=1
 PageLayoutDescrFile=
-PlotDirectoryName=/media/camilo/data/workspaces/icclopedia/four_transistor_modified_wilson_bjt_current_mirror_npn/
+PlotDirectoryName=/media/camilo/data/workspaces/icclopedia/current_mirrors/wilson_current_mirrors/four_transistor_npn/
 SubpartIdSeparator=0
 SubpartFirstId=65
 NetFmtName=
