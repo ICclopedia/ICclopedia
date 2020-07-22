@@ -70,17 +70,6 @@ Text Label 6550 3500 0    50   ~ 0
 ng
 Text Label 6875 3250 0    50   ~ 0
 nd
-$Comp
-L Sources_Signal:V-IND-DC Vsb
-U 1 1 5F0640BF
-P 7000 3625
-F 0 "Vsb" H 7100 3625 50  0000 L CNN
-F 1 "1.3V" H 7103 3580 50  0001 L CNN
-F 2 "" H 6750 3625 60  0001 C CNN
-F 3 "" H 6750 3625 60  0001 C CNN
-	1    7000 3625
-	1    0    0    1   
-$EndComp
 Wire Wire Line
 	7000 3725 7000 3750
 Wire Wire Line
@@ -107,6 +96,17 @@ F 1 "GND-Earth-REF" H 6850 3850 50  0001 C CNN
 F 2 "" H 6850 3950 50  0001 C CNN
 F 3 "" H 6850 3950 50  0001 C CNN
 	1    6850 3950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Sources_Signal:V-IND-DC Vbs
+U 1 1 5F0640BF
+P 7000 3625
+F 0 "Vbs" H 7100 3625 50  0000 L CNN
+F 1 "1.3V" H 7103 3580 50  0001 L CNN
+F 2 "" H 6750 3625 60  0001 C CNN
+F 3 "" H 6750 3625 60  0001 C CNN
+	1    7000 3625
 	1    0    0    -1  
 $EndComp
 $EndSCHEMATC

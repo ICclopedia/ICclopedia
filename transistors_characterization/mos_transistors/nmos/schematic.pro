@@ -1,4 +1,4 @@
-update=Wed 08 Jul 2020 06:01:58 PM EDT
+update=Tue 21 Jul 2020 12:15:43 PM EDT
 version=1
 last_client=eeschema
 [general]
@@ -34,7 +34,7 @@ LibDir=
 [schematic_editor]
 version=1
 PageLayoutDescrFile=
-PlotDirectoryName=/media/camilo/data/workspaces/icclopedia/transistors_characterization/nmos_transistor/
+PlotDirectoryName=/media/camilo/data/workspaces/icclopedia/transistors_characterization/mos_transistors/nmos/
 SubpartIdSeparator=0
 SubpartFirstId=65
 NetFmtName=Pcbnew
