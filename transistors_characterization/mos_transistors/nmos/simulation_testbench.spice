@@ -11,9 +11,22 @@ cd results/
 * Generic prefix for our output files
 set generic_prefix = 'simulation'
 
+echo 
 echo '----'
-echo '*Performing DC analysis sweep: Normalized Id vs. Vds for different Vgs bias'
+echo 'DC analysis sweep: Normalized Id vs. Vds for different Vgs bias'
 echo '----'
+echo 
+
+* Choose parameters to save: 
+* first DC parameters (needs to be done prior to sims)
+* then lumped AC capacitance parameters (to ground)
+* then relative AC capacitance parameters among terminals
+save all @m1[gm] @m1[gmbs] @m1[gds] @m1[id] @m1[vgs] @m1[vds] @m1[vbs] @m1[vth] @m1[vdsat]
++        @m1[cgg] @m1[cdd] @m1[css] @m1[cbb]
++        @m1[cgs] @m1[cgd] @m1[cgb]
++        @m1[cdg] @m1[cds] @m1[cdb]
++        @m1[csg] @m1[csd] @m1[csb]
+
 let vds_start = 0
 let vds_end = 1.3
 let vds_increment = 0.05
@@ -24,7 +37,6 @@ let vgs_end = 1.3
 let vgs_increment = 0.1
 let vgs_length=((vgs_end-vgs_start)/vgs_increment)+1
 
-save all @m1[vdsat] @m1[vth]
 DC Vds $&vds_start $&vds_end $&vds_increment Vgs $&vgs_start $&vgs_end $&vgs_increment 
 let vdsat = @m1[vdsat]
 reshape vdsat [$&vgs_length][$&vds_length]
@@ -60,122 +72,107 @@ set filetype=ascii
 set filename = {$generic_prefix}{'_dc_analysis.raw'}
 write $filename
 
+echo 
 echo '----'
-echo '*Performing transistor parameters sweep: transistor parameters vs Vgs'
+echo 'DC Analysis: Transistor parameters sweep vs. Vgs (for different Vbs)'
 echo '----'
+echo 
 
 * Plot y vs xscale
-set xscale="gmid"
+set xscale="veff"
+* General plotting properties for postcript printout
+* Needed for printing versus arbitrary x-axis (gnuplot does not work)
+set hcopydevtype=postscript
+set hcopypscolor = 1 
 
 let vgs_start = 0.05
 let vgs_end = 1.3
 let vgs_increment = 0.05
 let vgs_length=((vgs_end-vgs_start)/vgs_increment)+1
 
-* Store first DC parameters (needs to be done prior to sim)
-* then lumped AC capacitance parameters (to ground)
-* then relative AC capacitance parameters among terminals
-save all @m1[gm] @m1[gmbs] @m1[gds] @m1[id] @m1[vgs] @m1[vds] @m1[vbs] @m1[vth] @m1[vdsat]
-+        @m1[cgg] @m1[cdd] @m1[css] @m1[cbb]
-+        @m1[cgs] @m1[cgd] @m1[cgb]
-+        @m1[cdg] @m1[cds] @m1[cdb]
-+        @m1[csg] @m1[csd] @m1[csb]
+let vbs_start = -1.3
+let vbs_end = 0
+let vbs_increment = 0.1
+let vbs_length=abs((vbs_end-vbs_start)/vbs_increment)+1
+
+DC Vgs $&vgs_start $&vgs_end $&vgs_increment Vbs $&vbs_start $&vbs_end $&vbs_increment 
+$ Gather main device parameters
+let vth=@m1[vth][vgs_length-1]
+echo "Vth: $&vth V"
+
+$ Calculate important design parameters afterwards
+let veff=ng-@m1[vth]
+let gmtot=@m1[gm]+@m1[gmbs]           ; must account for back-gate transconductance
+let gmid=(gmtot)/@m1[id]
+let gmw=(gmtot)/(@m1[w]*@m1[m]*1e6)   ; in um
+let ao=20*log10(abs(gmtot/@m1[gds]))  ; in dB
+
+$ Note these approximations only work in active-sat
+let ft=gmtot/(2*pi*abs(@m1[cgg]))
+let fc=1/(2*pi*(1/@m1[gds])*((abs(@m1[cdg]))+(abs(@m1[cds]))+(abs(@m1[cdb]))))
+let fom=gmid*ft
+
+echo 'Plotting transistor parameters sweep'
+setscale $xscale
+foreach parameter gmid gmw ao ft fc fom
+    echo
+    echo "Plotting $parameter vs $xscale"
+    setcs xlabel = "$xscale"
+    setcs ylabel = "$parameter"
+    setcs title = "$parameter vs. $xscale"
+    set filename = "{$generic_prefix}_{$parameter}_{vbs_analysis}"
+    plot dc2.$parameter
+    hardcopy $filename{.ps} dc2.$parameter
+    +    title $title xlabel $xlabel ylabel $ylabel 
+end
+
+echo 
+echo '----'
+echo 'DC Analysis: Transistor parameters sweep vs. Vgs (for different lengths)'
+echo '----'
+echo 
+
+let vgs_start = 0.05
+let vgs_end = 1.3
+let vgs_increment = 0.05
+let vgs_length=((vgs_end-vgs_start)/vgs_increment)+1
 
 * For each transistor length, sweep:
 *   - vgs from 0.05 to 1.3V in 0.05v
-*foreach m_l $&m_lsize
+* foreach m_l $&m_lsize
 foreach m_l 130n 180n 250n 350n 500n 700n 1u 1.5u 2u 3u
     alter @M1[L] = $m_l
     DC Vgs $&vgs_start $&vgs_end $&vgs_increment 
     $ Gather main device parameters
     let vth=@m1[vth][vgs_length-1]
     echo "Vth: $&vth V"
-    let gm=@m1[gm]
-    let id=@m1[id]
-    let w=@m1[w]*1e6 ;in um
-    let ro=1/@m1[gds]
 
     $ Calculate important design parameters afterwards
-    let veff=ng-vth
-    let gmid=gm/id
-    let gmw=gm/w
-    let ao=20*log10(gm*ro)   ;in dB
+    let veff=ng-@m1[vth]
+    let gmid=@m1[gm]/@m1[id]
+    let gmw=@m1[gm]/@m1[w]
+    let ao=20*log10(@m1[gm]/@m1[gds])   ;in dB
     $ Note these approximations only work in active-sat
-    let ft=gm/(2*pi*abs(@m1[cgg]))
-    let fc=1/(2*pi*ro*((abs(@m1[cdg]))+(abs(@m1[cds]))+(abs(@m1[cdb]))))
-    let fom=gmid*ft
+    $ put in log form 
+    let ft=log10(@m1[gm]/(2*pi*abs(@m1[cgg])))
+    let fc=log10(1/(2*pi*(1/@m1[gds])*((abs(@m1[cdg]))+(abs(@m1[cds]))+(abs(@m1[cdb])))))
+    let fom=log10(gmid*ft)
     $ Update secscale for the current plot
     setscale $xscale
 end
 
-* Plotting properties for postcript printout
-* Needed for printing versus arbitrary x-axis (gnuplot does not work)
-set hcopydevtype=postscript
-set hcopypscolor = 1 
-
-echo '----'
-echo 'Performing transistor parameters sweep'
-echo '----'
-echo "Plotting gm/id vs $xscale"
-setcs xlabel = "$xscale"
-setcs ylabel = 'gm/Id transconductor current efficiency (S/A)' 
-setcs title = "gm/Id vs. $xscale"
-set filename = {$generic_prefix}{'_gmid_analysis'}
-set multiple_plots="dc2.gmid dc3.gmid dc4.gmid dc5.gmid dc6.gmid dc7.gmid dc8.gmid dc9.gmid dc10.gmid dc11.gmid"
-plot $multiple_plots
-hardcopy $filename{.ps} $multiple_plots
-+    title $title xlabel $xlabel ylabel $ylabel 
-
-echo "Plotting gm/w vs $xscale"
-setcs xlabel = "$xscale"
-setcs ylabel = 'gm/W transconductor area efficiency (S/um)'
-setcs title = "gm/W vs. $xscale"
-set filename = {$generic_prefix}{'_gmw_analysis'}
-set multiple_plots="dc2.gmw dc3.gmw dc4.gmw dc5.gmw dc6.gmw dc7.gmw dc8.gmw dc9.gmw dc10.gmw dc11.gmw"
-plot $multiple_plots
-hardcopy $filename{.ps} $multiple_plots
-+    title $title xlabel $xlabel ylabel $ylabel 
-
-echo "Plotting ao vs $xscale"
-setcs xlabel = "$xscale"
-setcs ylabel = 'ao transconductor intrinsic gain (dB)'
-setcs title = "ao vs. $xscale"
-set filename = {$generic_prefix}{'_ao_analysis'}
-set multiple_plots="dc2.ao dc3.ao dc4.ao dc5.ao dc6.ao dc7.ao dc8.ao dc9.ao dc10.ao dc11.ao"
-plot $multiple_plots
-hardcopy $filename{.ps} $multiple_plots
-+    title $title xlabel $xlabel ylabel $ylabel 
-
-echo "Plotting Ft  vs $xscale"
-setcs xlabel = "$xscale"
-setcs ylabel = 'Ft transconductor intrinsic gain (MHz)'
-setcs title = "Ft vs. $xscale"
-set filename = {$generic_prefix}{'_ft_analysis'}
-set multiple_plots="dc2.ft dc3.ft dc4.ft dc5.ft dc6.ft dc7.ft dc8.ft dc9.ft dc10.ft dc11.ft"
-plot $multiple_plots ylog
-hardcopy $filename{.ps} $multiple_plots ylog
-+    title $title xlabel $xlabel ylabel $ylabel 
-
-
-echo "Plotting Fc  vs $xscale"
-setcs xlabel = "$xscale"
-setcs ylabel = 'Fc transconductor intrinsic gain (MHz)'
-setcs title = "Fc vs. $xscale"
-set filename = {$generic_prefix}{'_fc_analysis'}
-set multiple_plots="dc2.fc dc3.fc dc4.fc dc5.fc dc6.fc dc7.fc dc8.fc dc9.fc dc10.fc dc11.fc"
-plot $multiple_plots ylog
-hardcopy $filename{.ps} $multiple_plots ylog
-+    title $title xlabel $xlabel ylabel $ylabel 
-
-echo "Plotting FOM  vs $xscale"
-setcs xlabel = "$xscale"
-setcs ylabel = 'FOM: gmid x Ft' 
-setcs title = "FOM vs. $xscale"
-set filename = {$generic_prefix}{'_fom_analysis'}
-set multiple_plots="dc2.fom dc3.fom dc4.fom dc5.fom dc6.fom dc7.fom dc8.fom dc9.fom dc10.fom dc11.fom"
-plot $multiple_plots ylog 
-hardcopy $filename{.ps} $multiple_plots ylog
-+    title $title xlabel $xlabel ylabel $ylabel 
+foreach parameter gmid ao ft fc fom
+    echo "Plotting $parameter vs $xscale"
+    setcs xlabel = "$xscale"
+    setcs ylabel = "$parameter"
+    setcs title = "$parameter vs. $xscale"
+    set filename = "{$generic_prefix}_{$parameter}_{length_analysis}"
+    echo $filename
+    set multiple_plots="dc3.$parameter dc4.$parameter dc5.$parameter dc6.$parameter dc7.$parameter dc8.$parameter dc9.$parameter dc10.$parameter dc11.$parameter dc12.$parameter"
+    plot $multiple_plots 
+    hardcopy $filename{.ps} $multiple_plots 
+    +    title $title xlabel $xlabel ylabel $ylabel 
+end
 
 echo '* Writing all simulation data to a textfile'
 set filetype=ascii
