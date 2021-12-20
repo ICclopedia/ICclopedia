@@ -27,8 +27,10 @@ MOS Current Mirror With Cascode Stage Simulation Testbench (Monte-Carlo)
     $ Monte-Carlo Simulation Properties
     let monte_carlo_runs = 100
     let current_run = 0
-    $ Updated based on ngspice example
-    set relative_variation = 0.1
+    $ Note this is an educational kit
+    $ In a real kit, the max variation would be obtained from foundry data given a desired sigma spec and device parameter
+    $ Here we are just using an arbitrary variation to match a variation at 3 sigma of roughly +/- 1%
+    set relative_variation = 0.5
     set sigma = 3
 
     $ Keep track (i.e. make a copy) of the original parameter set (just use XM1).
@@ -117,8 +119,8 @@ MOS Current Mirror With Cascode Stage Simulation Testbench (Monte-Carlo)
     set title = 'Monte Carlo Analysis (Transistors Mismatch): Current Output vs Drain Voltage'
     set xlabel = 'Drain Voltage (V)'
     set ylabel = 'Current Output (uA)'
-    set yhigh = 50.5
-    set ylow = 49.5
+    set yhigh = 51.5
+    set ylow = 48.5
     set filename = {$generic_prefix}{'_analysis_monte_carlo.ps'}
     plot all ylimit $ylow $yhigh title $title xlabel $xlabel ylabel $ylabel 
     hardcopy $filename all ylimit $ylow $yhigh title $title xlabel $xlabel ylabel $ylabel 
