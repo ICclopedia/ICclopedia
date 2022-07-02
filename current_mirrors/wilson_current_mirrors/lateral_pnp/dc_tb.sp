@@ -10,7 +10,7 @@ shell mkdir -p results
 cd results
 
 * Generic prefix for our output files
-set generic_prefix = 'wilson_current_mirror_lateral_pnp_simulation'
+set generic_prefix = 'dc'
 
 echo  '* Operating point analysis: Current match '
 
@@ -35,17 +35,17 @@ set ylow = 47
 set gnuplot_terminal = 'eps'
 
 setcs title = 'DC Analysis: Collector Current Output vs Collector Voltage' 
-set filename = {$generic_prefix}{'_dc_analysis_sweep'}
+set filename = {$generic_prefix}
 gnuplot $filename (v2#branch*1e+06) xdelta $xdel title $title xlabel $xlabel ylabel $ylabel 
 
 setcs title = 'DC Analysis: Collector Current Output vs Collector Voltage (Zoom)' 
-set filename = {$generic_prefix}{'_dc_analysis'}
+set filename = {$generic_prefix}{'_zoom'}
 gnuplot $filename (v2#branch*1e+06) ylimit $ylow $yhigh xdelta $xdel title $title xlabel $xlabel ylabel $ylabel 
 
 echo '* Writing all simulation data to a textfile'
 
 set filetype=ascii
-set filename = {$generic_prefix}{'_results.raw'}
+set filename = {$generic_prefix}{'.raw'}
 write $filename
 
 .ENDC

@@ -14,7 +14,7 @@ Four Transistor Modified Wilson BJT Current Mirror Simulation Testbench (DC)
     shell mkdir -p results 
     cd results
     $ Generic prefix for our output files
-    set generic_prefix = 'four_transistor_modified_wilson_bjt_current_mirror_simulation'
+    set generic_prefix = 'dc'
     
     $ Operating Point analysis
     $ ---
@@ -52,18 +52,18 @@ Four Transistor Modified Wilson BJT Current Mirror Simulation Testbench (DC)
     set gnuplot_terminal = 'eps'
 
     setcs title = 'DC Analysis: Collector Current Output vs Collector Voltage' 
-    set filename = {$generic_prefix}{'_dc_analysis_sweep'}
+    set filename = {$generic_prefix}
     gnuplot $filename (v2#branch*-1e+06) xdelta $xdel title $title xlabel $xlabel ylabel $ylabel 
 
     setcs title = 'DC Analysis: Collector Current Output vs Collector Voltage (Zoom)' 
-    set filename = {$generic_prefix}{'_dc_analysis'}
+    set filename = {$generic_prefix}{'_zoom'}
     gnuplot $filename (v2#branch*-1e+06) ylimit $ylow $yhigh xdelta $xdel title $title xlabel $xlabel ylabel $ylabel 
 
     $ Write Simulation Data $
     echo '* Writing all simulation data to a textfile'
 
     set filetype=ascii
-    set filename = {$generic_prefix}{'_results_dc.raw'}
+    set filename = {$generic_prefix}{'.raw'}
     write $filename
 
 .ENDC

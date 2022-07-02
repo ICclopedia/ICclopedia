@@ -1,10 +1,10 @@
-Four Transistor Modified Wilson BJT Current Mirror Simulation Testbench (Montecarlo)
-$ Thoroughly commented for understanding (feel free to remove comments) 
+MC TB
+* Comments are for reference only (to ease understanding), feel free to remove them
 
 * ---
 * Netlist
 * ---
-.INCLUDE four_transistor_modified_wilson_bjt_current_mirror_npn_simulation_netlist.spice
+.INCLUDE netlist.sp
 
 * ---
 * Control (Interactive Interpreter)
@@ -13,9 +13,9 @@ $ Thoroughly commented for understanding (feel free to remove comments)
 
     $ Make a directory for our output simulation files.
     shell mkdir -p results 
-    cd results
+    cd results/
     $ Generic prefix for our output files
-    set generic_prefix = 'four_transistor_modified_wilson_bjt_current_mirror_simulation'
+    set generic_prefix = 'dc_mc'
 
     $ To support hard-printouts with ngnutmeg (not required if using gnuplot)
     $ But gnuplot only support plotting 63 vectors.
@@ -28,23 +28,27 @@ $ Thoroughly commented for understanding (feel free to remove comments)
     $ Monte-Carlo Simulation Properties
     let monte_carlo_runs = 100
     let current_run = 0
-    set relative_variation = 0.05
+    $ Note this is an educational kit
+    $ In a real kit, the max variation would be obtained from foundry data given a desired sigma spec and device parameter
+    $ Here we are just using an arbitrary variation to match a variation at 3 sigma of roughly +/- 1%
+    set relative_variation = 0.5
     set sigma = 3
 
-    $ Keep track (i.e. make a copy) of the original parametter set (just use XQ1).
+    $ Keep track (i.e. make a copy) of the original parameter set (just use XM1).
     $ We need to use "global vectors" for this (to keep a copy of the actual value), 
     $ Setting variables keeps a reference instead, which does not work.
-    $ Only the major parameters from our bipolar process need to be varied.
-    $ As per book reference: Is, Bf and the capacitances (Cje, Cjc and Cjs).
-    $ For the provided NPN subcircuit: from model qn1_npn1 (Is, Bf, Cje and Cjc), 
-    $ from model dcs_npn1 (Cjo).
-    $ Important: you can use the "show" command to display all parsed devices
+    $ -
+    $ Only the major parameters from our CMOS process need to be varied.
+    $ As per book reference: threshold voltage (vth), transconductance (gm) and capacitances.
+    $ We will only be 'altering' parameters that affect directly Vth and Gm, 
+    $ as we are operating at DC, mainly: vth0, u0, toxm (for bsim4), wint and lint.
+    $ Note: you can use the "show" command to display all parsed devices
     $ and models; this is extremely helpful.
-    let npn1_qn1_is = @xq1:qn1_npn1[is]
-    let npn1_qn1_bf = @xq1:qn1_npn1[bf]
-    let npn1_qn1_cje = @xq1:qn1_npn1[cje]
-    let npn1_qn1_cjc = @xq1:qn1_npn1[cjc]
-    let npn1_dcs_cjo= @xq1:dcs_npn1[cjo]
+    let pmos_vth0 = @pmos[vth0]
+    let pmos_u0 = @pmos[u0]
+    let pmos_toxm = @pmos[toxm]
+    let pmos_wint = @pmos[wint]
+    let pmos_lint = @pmos[lint]
 
     $ Create our output plot (collection of vectors which store our simulation data)
     $ first create a new plot and make it the current plot.
@@ -71,38 +75,19 @@ $ Thoroughly commented for understanding (feel free to remove comments)
     dowhile current_run < monte_carlo_runs
        
         $ note that run=0 simulates with nominal parameters
-        $ We need to alter the parametter of each transistor independently.
-        $ We are altering capacitances, but they should not matter much (DC only)
+        $ We need to alter the parameter of each transistor independently.
         if current_run > 0
-            $ XQ1
-            altermod @xq1:qn1_npn1[is] = gauss(npn1_qn1_is, $relative_variation, $sigma)
-            altermod @xq1:qn1_npn1[bf] = gauss(npn1_qn1_bf, $relative_variation, $sigma)
-            altermod @xq1:qn1_npn1[cje] = gauss(npn1_qn1_cje, $relative_variation, $sigma)
-            altermod @xq1:qn1_npn1[cjc] = gauss(npn1_qn1_cjc, $relative_variation, $sigma)
-            altermod @xq1:dcs_npn1[cjo] = gauss(npn1_dcs_cjo, $relative_variation, $sigma)
-            $ XQ2
-            altermod @xq2:qn1_npn1[is] = gauss(npn1_qn1_is, $relative_variation, $sigma)
-            altermod @xq2:qn1_npn1[bf] = gauss(npn1_qn1_bf, $relative_variation, $sigma)
-            altermod @xq2:qn1_npn1[cje] = gauss(npn1_qn1_cje, $relative_variation, $sigma)
-            altermod @xq2:qn1_npn1[cjc] = gauss(npn1_qn1_cjc, $relative_variation, $sigma)
-            altermod @xq2:dcs_npn1[cjo] = gauss(npn1_dcs_cjo, $relative_variation, $sigma)
-            $ XQ3
-            altermod @xq3:qn1_npn1[is] = gauss(npn1_qn1_is, $relative_variation, $sigma)
-            altermod @xq3:qn1_npn1[bf] = gauss(npn1_qn1_bf, $relative_variation, $sigma)
-            altermod @xq3:qn1_npn1[cje] = gauss(npn1_qn1_cje, $relative_variation, $sigma)
-            altermod @xq3:qn1_npn1[cjc] = gauss(npn1_qn1_cjc, $relative_variation, $sigma)
-            altermod @xq3:dcs_npn1[cjo] = gauss(npn1_dcs_cjo, $relative_variation, $sigma)
-            $ XQ4 
-            altermod @xq4:qn1_npn1[is] = gauss(npn1_qn1_is, $relative_variation, $sigma)
-            altermod @xq4:qn1_npn1[bf] = gauss(npn1_qn1_bf, $relative_variation, $sigma)
-            altermod @xq4:qn1_npn1[cje] = gauss(npn1_qn1_cje, $relative_variation, $sigma)
-            altermod @xq4:qn1_npn1[cjc] = gauss(npn1_qn1_cjc, $relative_variation, $sigma)
-            altermod @xq4:dcs_npn1[cjo] = gauss(npn1_dcs_cjo, $relative_variation, $sigma)
+            $ XM1
+            altermod @pmos[vth0] = gauss(pmos_vth0, $relative_variation, $sigma)
+            altermod @pmos[u0]   = gauss(pmos_u0  , $relative_variation, $sigma)
+            altermod @pmos[toxm]  = gauss(pmos_toxm , $relative_variation, $sigma)
+            altermod @pmos[wint]  = gauss(pmos_wint , $relative_variation, $sigma)
+            altermod @pmos[lint]  = gauss(pmos_lint , $relative_variation, $sigma)
         end
 
         $ Run our DC analysis with the transistors with modified parameters
         $ This creates a new plot
-        DC V2 0V 5V 0.1V          
+        DC V2 0V 1.3V 0.05V          
 
         $ Store a reference of the current plot (with our simulated data vectors) 
         $ to temp_plot (we are going to switch to our monte_carlo plot)
@@ -132,25 +117,23 @@ $ Thoroughly commented for understanding (feel free to remove comments)
     $ ---
     $ plotting properties
     setscale voltage_sweep 
-    setcs title = 'Monte Carlo Analysis (Transistors Mismatch): Current Output vs Collector Voltage'
-    setcs xlabel = 'Collector Volage (V)'
-    setcs ylabel = 'Current Output (uA)'
-    set yhigh = 55
-    set ylow = 45
-    set gnuplot_terminal = 'eps'
-
-    set filename = {$generic_prefix}{'_analysis_monte_carlo.ps'}
+    set title = 'Monte Carlo Analysis (Transistors Mismatch): Current Output vs Drain Voltage'
+    set xlabel = 'Drain Voltage (V)'
+    set ylabel = 'Current Output (uA)'
+    set yhigh = 51.5
+    set ylow = 48.5
+    set filename = {$generic_prefix}
     plot all ylimit $ylow $yhigh title $title xlabel $xlabel ylabel $ylabel 
     hardcopy $filename all ylimit $ylow $yhigh title $title xlabel $xlabel ylabel $ylabel 
     
     $ gnuplot can only do 63 vectors.
-    $gnuplot filename all ylimit $ylow $yhigh title $title xlabel $xlabel ylabel $ylabel 
+    $ gnuplot filename all ylimit $ylow $yhigh title $title xlabel $xlabel ylabel $ylabel 
     
     $ Write Simulation Data $
     echo '* Writing all simulation data to a textfile'
 
     set filetype=ascii
-    set filename = {$generic_prefix}{'_results_montecarlo.raw'}
+    set filename = {$generic_prefix}{'.raw'}
     write $filename
 
 .ENDC

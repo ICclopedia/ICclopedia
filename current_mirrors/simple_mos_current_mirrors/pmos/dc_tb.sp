@@ -1,6 +1,6 @@
-Source Degeneration Resistors Negative Feedback Simulation Testbench
+Simple NMOS Current Mirror
 
-.INCLUDE source_degeneration_resistors_negative_feedback_simulation_netlist.spice
+.INCLUDE simple_mos_current_mirror_pmos_simulation_netlist.spice
 
 * Interactive simulation main entry *
 .CONTROL
@@ -9,7 +9,7 @@ Source Degeneration Resistors Negative Feedback Simulation Testbench
 shell mkdir -p results 
 cd results/
 * Generic prefix for our output files
-set generic_prefix = 'source_degeneration_resistors_negative_feedback_simulation'
+set generic_prefix = 'dc'
 
 echo  '* Operating point analysis: Nominal current match '
 
@@ -26,32 +26,30 @@ show m : gm,gmbs,gds,id,vgs,vds,vbs,vth,vdsat
 echo 
 echo '*Performing DC analysis sweep: Voltage dependence of current mirror'
 
-DC V2 0V 1.3V 0.05V          ; Sweep Drain voltage from 0v to 1.3v in 0.05v increments.
+DC V2 0V 1.3V 0.05V          ; Sweep Drain voltage from 1.3v to 0v in 0.05v increments.
 
-
+* set our plot scale (i.e. x axis to the n2 vector)
+setscale n2 
 * Graph properties
-setscale n2 ; set our plot scale (i.e. x axis to the n2 vector)
 setcs xlabel = 'Drain Voltage (V)'
 setcs ylabel = 'Drain Current Output (uA)'
 set xdel = 0.1
-set xlow = 0.2
-set xhigh = 1.3 
 set ylow =46 
 set yhigh = 52 
 set gnuplot_terminal = 'eps'
 
 setcs title = 'DC Analysis: Drain Current Output vs Drain Voltage' 
-set filename = {$generic_prefix}{'_dc_analysis'}
-gnuplot $filename (v2#branch*-1e+06) xdelta $xdel title $title xlabel $xlabel ylabel $ylabel 
+set filename = {$generic_prefix}
+gnuplot $filename (v2#branch*-1e+06) xdel $xdelta title $title xlabel $xlabel ylabel $ylabel 
 
 setcs title = 'DC Analysis: Drain Current Output vs Drain Voltage (Zoom)' 
-set filename = {$generic_prefix}{'_dc_analysis_zoom'}
-gnuplot $filename (v2#branch*-1e+06) ylimit $ylow $yhigh xlimit $xlow $xhigh xdelta $xdel title $title xlabel $xlabel ylabel $ylabel 
+set filename = {$generic_prefix}{'_zoom'}
+gnuplot $filename (v2#branch*-1e+06) ylimit $ylow $yhigh xdelta $xdel title $title xlabel $xlabel ylabel $ylabel 
 
 echo '* Writing all simulation data to a textfile'
 
 set filetype=ascii
-set filename = {$generic_prefix}{'_results.raw'}
+set filename = {$generic_prefix}{'.raw'}
 write $filename
 
 .ENDC

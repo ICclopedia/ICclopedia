@@ -5,11 +5,11 @@
 * Netlist: Circuit Elements (Devices)
 * dev <nets>        <values>
 * -----------------------------------
-I1    n_pos n3      50uA
-V1    n_pos 0       1.3V
-V2    n2    0       0.65V
-R1    n3    n1      10.7kΩ
-M1    n1    n1 0  0 nmos W=20u L=3u
-M2    n4    n1 0  0 nmos W=20u L=3u
-M3    n2 n3 n4 0    nmos W=10u L=0.35u
+I1    n3 0          50uA
+V1    vp 0          1.3V
+V2    vp n2         0.65V
+R1    n1 n3         10kΩ
+M1    n1 n1 vp vp   pmos W=100u L=3u
+M2    n4 n1 vp vp   pmos W=100u L=3u
+M3    n2 n3 n4 vp   pmos W=50u  L=0.35u
 .end

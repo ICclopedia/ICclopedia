@@ -1,10 +1,10 @@
-MOS Current Mirror With Cascode Stage Simulation Testbench (Monte-Carlo)
+MC TB
 * Comments are for reference only (to ease understanding), feel free to remove them
 
 * ---
 * Netlist
 * ---
-.INCLUDE nmos_cascoded_current_mirror.sp
+.INCLUDE netlist.sp
 
 * ---
 * Control (Interactive Interpreter)
@@ -13,8 +13,9 @@ MOS Current Mirror With Cascode Stage Simulation Testbench (Monte-Carlo)
 
     $ Make a directory for our output simulation files.
     shell mkdir -p results 
+    cd results/
     $ Generic prefix for our output files
-    set generic_prefix = 'results/mos_cascoded_current_mirror_simulation'
+    set generic_prefix = 'dc_mc'
 
     $ To support hard-printouts with ngnutmeg (not required if using gnuplot)
     $ But gnuplot only support plotting 63 vectors.
@@ -121,7 +122,7 @@ MOS Current Mirror With Cascode Stage Simulation Testbench (Monte-Carlo)
     set ylabel = 'Current Output (uA)'
     set yhigh = 51.5
     set ylow = 48.5
-    set filename = {$generic_prefix}{'_analysis_monte_carlo.ps'}
+    set filename = {$generic_prefix}{'.ps'}
     plot all ylimit $ylow $yhigh title $title xlabel $xlabel ylabel $ylabel 
     hardcopy $filename all ylimit $ylow $yhigh title $title xlabel $xlabel ylabel $ylabel 
     
@@ -132,7 +133,7 @@ MOS Current Mirror With Cascode Stage Simulation Testbench (Monte-Carlo)
     echo '* Writing all simulation data to a textfile'
 
     set filetype=ascii
-    set filename = {$generic_prefix}{'_results_montecarlo.raw'}
+    set filename = {$generic_prefix}{'.raw'}
     write $filename
 
 .ENDC
