@@ -1,0 +1,11 @@
+.title KiCad schematic
+M1 /n1 /n1 /vp /vp W=100u L=3u
+M2 /n4 /n1 /vp /vp W=100u L=3u
+V2 /vp /n2 0.65V
+V1 /vp /0 1.3V
+M3 /n2 /n3 /n4 /vp W=50u L=0.35u
+I2 /n3 /0 50uA
+I1 /n5 /0 50uA
+M4 /n5 /n3 /n1 /vp W=50u L=0.35u
+M5 /n3 /n3 /vp /vp W=1.4u L=3u
+.end
