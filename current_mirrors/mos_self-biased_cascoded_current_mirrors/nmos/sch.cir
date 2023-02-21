@@ -1,0 +1,9 @@
+.title KiCad schematic
+M1 /n3 /n1 /0 /0 W=20u L=3u
+M2 /n4 /n1 /0 /0 W=20u L=3u
+V2 /n2 /0 0.65V
+V1 Net-_I1-Pad1_ /0 1.3V
+M3 /n2 /n1 /n4 /0 W=10u L=0.35u
+I1 Net-_I1-Pad1_ /n1 50uA
+M4 /n1 /n1 /n3 /0 W=10u L=0.35u
+.end
