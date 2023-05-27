@@ -5,3 +5,8 @@
 *.lib
 sym-lib-table
 *.sch-bak
+*.eps
+*.raw
+*.data
+*.plt
+*.ps
