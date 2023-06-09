@@ -13,23 +13,21 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Label 6100 2700 0    60   ~ 0
-vp
-Text Label 6500 3100 0    50   ~ 0
+Text Label 6500 3100 0    60   ~ 0
 n1
-Text Label 7050 3550 0    50   ~ 0
+Text Label 7050 3550 0    60   ~ 0
 n4
 Text Label 6750 3900 0    60   ~ 0
 0
 $Comp
 L Sources_Power:V-PLUS-SUPPLY #PWR1
 U 1 1 5EE601A3
-P 5200 2700
-F 0 "#PWR1" H 5200 2850 50  0001 C BNN
-F 1 "V+" V 5200 2777 50  0000 L CNN
-F 2 "" H 5200 2700 60  0001 C CNN
-F 3 "" H 5200 2700 60  0001 C CNN
-	1    5200 2700
+P 5800 2750
+F 0 "#PWR1" H 5800 2900 50  0001 C BNN
+F 1 "V+" V 5800 2827 50  0000 L CNN
+F 2 "" H 5800 2750 60  0001 C CNN
+F 3 "" H 5800 2750 60  0001 C CNN
+	1    5800 2750
 	0    -1   -1   0   
 $EndComp
 $Comp
@@ -57,7 +55,7 @@ F 4 "d,g,s,b" H 7150 3775 60  0001 L CNN "Spice_Node_Sequence"
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6450 2800 6450 2700
+	6450 2800 6450 2750
 $Comp
 L Sources_Signal:V-IND-DC V2
 U 1 1 5EE7A4AB
@@ -91,19 +89,19 @@ Text Label 7050 3700 0    60   ~ 0
 $Comp
 L Sources_Signal:V-IND-DC V1
 U 1 1 5EE624D9
-P 5400 3450
-F 0 "V1" H 5503 3496 50  0000 L CNN
-F 1 "1.3V" H 5503 3405 50  0000 L CNN
-F 2 "" H 5150 3450 60  0001 C CNN
-F 3 "" H 5150 3450 60  0001 C CNN
-	1    5400 3450
+P 6000 3300
+F 0 "V1" H 6103 3346 50  0000 L CNN
+F 1 "1.3V" H 6103 3255 50  0000 L CNN
+F 2 "" H 5750 3300 60  0001 C CNN
+F 3 "" H 5750 3300 60  0001 C CNN
+	1    6000 3300
 	-1   0    0    -1  
 $EndComp
 $Comp
 L Transistors_MOSFET:NCH-ENH-4TERM-GENERIC M3
 U 1 1 61512FB2
 P 6950 3300
-F 0 "M3" H 7025 3400 50  0000 R CNN
+F 0 "M3" H 7050 3400 50  0000 R CNN
 F 1 "W=10u L=0.35u" H 7350 3200 50  0000 R CNN
 F 2 "" H 6630 3820 60  0001 C CNN
 F 3 "" H 7140 3385 60  0001 C CNN
@@ -111,8 +109,6 @@ F 4 "d,g,s,b" H 7150 3375 60  0001 L CNN "Spice_Node_Sequence"
 	1    6950 3300
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	6600 3700 6650 3700
 Connection ~ 6750 3900
 Wire Wire Line
 	7050 3700 7100 3700
@@ -129,27 +125,16 @@ Wire Wire Line
 	6450 3800 6450 3900
 Wire Wire Line
 	6450 3900 6750 3900
-Text Label 7150 3050 0    50   ~ 0
+Text Label 7150 3100 0    50   ~ 0
 n2
-$Comp
-L Sources_Signal:I-IND-DC I2
-U 1 1 62DE0816
-P 5750 2900
-F 0 "I2" H 5853 2946 50  0000 L CNN
-F 1 "50uA" H 5853 2855 50  0000 L CNN
-F 2 "" H 5425 2900 60  0001 C CNN
-F 3 "" H 5425 2900 60  0001 C CNN
-	1    5750 2900
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
-	5300 2700 5400 2700
+	5900 2750 6000 2750
 $Comp
 L Sources_Signal:I-IND-DC I1
 U 1 1 5EE64339
 P 6450 2900
-F 0 "I1" H 6553 2946 50  0000 L CNN
-F 1 "50uA" H 6553 2855 50  0000 L CNN
+F 0 "I1" H 6300 2950 50  0000 L CNN
+F 1 "50uA" H 6200 2850 50  0000 L CNN
 F 2 "" H 6125 2900 60  0001 C CNN
 F 3 "" H 6125 2900 60  0001 C CNN
 	1    6450 2900
@@ -158,14 +143,14 @@ $EndComp
 $Comp
 L Transistors_MOSFET:NCH-ENH-4TERM-GENERIC M4
 U 1 1 62DF1A2D
-P 6350 3300
-F 0 "M4" H 6425 3400 50  0000 R CNN
-F 1 "W=10u L=0.35u" H 6750 3200 50  0000 R CNN
-F 2 "" H 6030 3820 60  0001 C CNN
-F 3 "" H 6540 3385 60  0001 C CNN
-F 4 "d,g,s,b" H 6550 3375 60  0001 L CNN "Spice_Node_Sequence"
-	1    6350 3300
-	1    0    0    -1  
+P 6550 3300
+F 0 "M4" H 6650 3400 50  0000 R CNN
+F 1 "W=10u L=0.35u" H 7000 3200 50  0000 R CNN
+F 2 "" H 6230 3820 60  0001 C CNN
+F 3 "" H 6740 3385 60  0001 C CNN
+F 4 "d,g,s,b" H 6750 3375 60  0001 L CNN "Spice_Node_Sequence"
+	1    6550 3300
+	-1   0    0    -1  
 $EndComp
 Wire Wire Line
 	7050 3600 7050 3400
@@ -173,86 +158,54 @@ Wire Wire Line
 	7050 3300 7100 3300
 Text Label 7050 3300 0    50   ~ 0
 0
-Text Label 6450 3300 0    50   ~ 0
-0
-Wire Wire Line
-	6450 3300 6500 3300
-$Comp
-L Transistors_MOSFET:NCH-ENH-4TERM-GENERIC M5
-U 1 1 62DFD255
-P 5850 3300
-F 0 "M5" H 5925 3400 50  0000 R CNN
-F 1 "W=1.4u L=3u" H 6200 3200 50  0000 R CNN
-F 2 "" H 5530 3820 60  0001 C CNN
-F 3 "" H 6040 3385 60  0001 C CNN
-F 4 "d,g,s,b" H 6050 3375 60  0001 L CNN "Spice_Node_Sequence"
-	1    5850 3300
-	-1   0    0    -1  
-$EndComp
-Wire Wire Line
-	5750 3100 6100 3100
-Wire Wire Line
-	5750 3400 5750 3900
-Text Label 5900 3300 0    50   ~ 0
-n5
-Wire Wire Line
-	7050 3200 7050 3050
-Wire Wire Line
-	7050 3050 7350 3050
-Wire Wire Line
-	7350 3050 7350 3400
-Text Label 6450 3550 0    50   ~ 0
-n3
-Wire Wire Line
-	5750 2800 5750 2700
-Connection ~ 5400 2700
-Wire Wire Line
-	5400 2700 5750 2700
-Wire Wire Line
-	5400 3550 5400 3900
-Wire Wire Line
-	5400 3900 5750 3900
-Text Label 5700 3300 0    50   ~ 0
-0
-Wire Wire Line
-	5750 3300 5700 3300
-Connection ~ 5750 2700
-Connection ~ 5750 3900
-Wire Wire Line
-	5750 3900 6450 3900
-Connection ~ 6450 3900
-Wire Wire Line
-	5750 2700 6450 2700
-Wire Wire Line
-	5900 3300 6100 3300
-Wire Wire Line
-	5750 3100 5750 3200
-Wire Wire Line
-	6100 3100 6100 3300
-Connection ~ 6100 3300
-Wire Wire Line
-	6100 3300 6300 3300
-Wire Wire Line
-	6450 3400 6450 3600
-Wire Wire Line
-	6650 3100 6450 3100
-Wire Wire Line
-	6650 3100 6650 3700
-Wire Wire Line
-	6450 3200 6450 3100
-Connection ~ 6650 3700
-Wire Wire Line
-	6650 3700 6900 3700
-Wire Wire Line
-	5750 3000 5750 3100
-Connection ~ 5750 3100
 Wire Wire Line
 	6450 3000 6450 3100
-Connection ~ 6450 3100
+Text Label 6400 3300 0    50   ~ 0
+0
+Wire Wire Line
+	6400 3300 6450 3300
+Wire Wire Line
+	7050 3200 7050 3100
+Wire Wire Line
+	7050 3100 7350 3100
+Wire Wire Line
+	7350 3100 7350 3400
+Wire Wire Line
+	6600 3300 6750 3300
+Wire Wire Line
+	6000 3200 6000 2750
+Wire Wire Line
+	6000 3400 6000 3900
+Wire Wire Line
+	6000 2750 6450 2750
+Connection ~ 6000 2750
+Wire Wire Line
+	6000 3900 6450 3900
+Connection ~ 6450 3900
+Wire Wire Line
+	6750 3100 6450 3100
+Wire Wire Line
+	6450 3100 6450 3200
+Connection ~ 6750 3300
 Wire Wire Line
 	6750 3300 6900 3300
-Text Label 6750 3300 0    50   ~ 0
-n5
 Wire Wire Line
-	5400 2700 5400 3350
+	6750 3300 6750 3100
+Wire Wire Line
+	6450 3400 6450 3500
+Text Label 6450 3550 0    50   ~ 0
+n3
+Connection ~ 6450 3100
+Wire Wire Line
+	6600 3700 6750 3700
+Wire Wire Line
+	6750 3700 6750 3500
+Wire Wire Line
+	6750 3500 6450 3500
+Connection ~ 6750 3700
+Wire Wire Line
+	6750 3700 6900 3700
+Connection ~ 6450 3500
+Wire Wire Line
+	6450 3500 6450 3600
 $EndSCHEMATC

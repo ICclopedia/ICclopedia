@@ -55,5 +55,6 @@ echo '* Writing all simulation data to a textfile'
 set filetype=ascii
 set filename = {$generic_prefix}{'.raw'}
 write $filename
+cd ..
 
 .ENDC

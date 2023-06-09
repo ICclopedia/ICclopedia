@@ -1,6 +1,7 @@
 Transistors characterization NMOS transistor simulation testbench
 
-.INCLUDE ./simulation_netlist.spice
+*.INCLUDE ./simulation_netlist.spice
+.INCLUDE ./sch.sp
 
 * Interactive simulation main entry *
 .CONTROL
@@ -174,8 +175,12 @@ end
 echo 
 echo "* Transistor parameters  vs. $xscale (for different lengths)"
 
-set vgs_start = 0.05
-set vgs_end = 1.3
+*set vgs_start = 0.05
+*set vgs_end = 1.3
+*set vgs_increment = 0.05
+
+set vgs_start = 0.5
+set vgs_end = 0.6
 set vgs_increment = 0.05
 
 * For each transistor length, sweep:
@@ -194,6 +199,7 @@ foreach m_l 130n 180n 250n 350n 500n 700n 1u 1.5u 2u 3u
     $ Calculate important design parameters afterwards
     let veff=ng-@m1[vth]
     let gmid=@m1[gm]/@m1[id]
+    let ro=1/@m1[gds]
     let ao=@m1[gm]/@m1[gds] 
     let db20ao=20*log10(ao)  $ in dB
 
@@ -210,7 +216,7 @@ foreach m_l 130n 180n 250n 350n 500n 700n 1u 1.5u 2u 3u
     setscale $xscale
 end
 
-foreach parameter gmid db20ao logft logfom
+foreach parameter gmid ro db20ao logft logfom
     echo "Plotting $parameter vs $xscale"
     setcs xlabel = "$xscale"
     setcs ylabel = "$parameter"

@@ -1,6 +1,6 @@
 * Simple PMOS Current Mirror
 
-.INCLUDE ../device_parameter_libraries/cmos_ptm_asu_130nm_tt.spice
+.INCLUDE ../../../device_parameter_libraries/cmos_ptm_asu_130nm_tt.spice
 
 * Circuit Elements:  Devices
 * dev <nets>         <values>

@@ -13,10 +13,10 @@ set yrange [-4.842391e-02:1.016820e+00]
 #set y2tics 1
 set format y "%g"
 set format x "%g"
-plot 'dc_analysis_large_signal_id_vds_vgs.data' using 1:2 with lines lw 1 title "(-vds#branch*1e+03)/(@m1[w]*1e6)"
+plot 'dc_large_signal_id_vds_vgs.data' using 1:2 with lines lw 1 title "(-vds#branch*1e+03)/(@m1[w]*1e6)"
 set terminal push
 set terminal postscript eps color noenhanced
-set out 'dc_analysis_large_signal_id_vds_vgs.eps'
+set out 'dc_large_signal_id_vds_vgs.eps'
 replot
 set term pop
 replot

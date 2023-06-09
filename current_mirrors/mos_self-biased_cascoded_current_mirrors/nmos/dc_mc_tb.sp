@@ -135,5 +135,6 @@ MC TB
     set filetype=ascii
     set filename = {$generic_prefix}{'.raw'}
     write $filename
+    cd ..
 
 .ENDC

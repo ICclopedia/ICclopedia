@@ -27,15 +27,15 @@
      objecttolerance="10"
      gridtolerance="10"
      guidetolerance="10"
-     inkscape:pageopacity="1"
+     inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1920"
      inkscape:window-height="1030"
      id="namedview4"
      showgrid="false"
      inkscape:zoom="1.9866333"
-     inkscape:cx="205.15746"
-     inkscape:cy="166.9831"
+     inkscape:cx="301.23119"
+     inkscape:cy="118.40254"
      inkscape:window-x="1280"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
@@ -309,7 +309,7 @@
              sodipodi:role="line"
              id="tspan156">(v2#branch*-1e+06)</tspan></text>
 </g><path
-         d="m 3190,2243 h 199.5 M 343,627.5 l 142.5,1054 142,357 142.5,111 142,23 142.5,6 142.5,3.5 142,2 142.5,2 142,1.5 142.5,1.5 142.5,1.5 142,1.5 142.5,1.5 142,1.5 142.5,1 142,1.5 142.5,1.5 142.5,1 142,1.5 142.5,1 142,1.5 142.5,1"
+         d="m 3190,2243 h 199.5 M 403,224 l 82.5,1286.5 142,541 142.5,76.5 142,18.5 142.5,10 142.5,7 142,6.5 142.5,6 142,5.5 142.5,5.5 142.5,5 142,5.5 142.5,5 142,5 142.5,5 142,5 142.5,5.5 142.5,5 142,5.5 142.5,6 142,6 142.5,7"
          style="fill:none;stroke:#9400d4;stroke-width:2.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:3.79999995;stroke-dasharray:none;stroke-opacity:1"
          id="path160"
          inkscape:connector-curvature="0" /><path

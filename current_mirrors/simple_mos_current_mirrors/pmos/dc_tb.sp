@@ -1,6 +1,6 @@
 Simple NMOS Current Mirror
 
-.INCLUDE simple_mos_current_mirror_pmos_simulation_netlist.spice
+.INCLUDE sch.sp
 
 * Interactive simulation main entry *
 .CONTROL
@@ -40,7 +40,7 @@ set gnuplot_terminal = 'eps'
 
 setcs title = 'DC Analysis: Drain Current Output vs Drain Voltage' 
 set filename = {$generic_prefix}
-gnuplot $filename (v2#branch*-1e+06) xdel $xdelta title $title xlabel $xlabel ylabel $ylabel 
+gnuplot $filename (v2#branch*-1e+06) xdelta $xdel title $title xlabel $xlabel ylabel $ylabel 
 
 setcs title = 'DC Analysis: Drain Current Output vs Drain Voltage (Zoom)' 
 set filename = {$generic_prefix}{'_zoom'}
@@ -51,5 +51,6 @@ echo '* Writing all simulation data to a textfile'
 set filetype=ascii
 set filename = {$generic_prefix}{'.raw'}
 write $filename
+cd ..
 
 .ENDC

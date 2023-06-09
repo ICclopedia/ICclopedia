@@ -13,10 +13,10 @@ set yrange [4.570000e+01:5.230000e+01]
 #set y2tics 1
 set format y "%g"
 set format x "%g"
-plot 'simple_pmos_current_mirror_simulation_dc_analysis_zoom.data' using 1:2 with lines lw 1 title "(v2#branch*-1e+06)"
+plot 'dc_zoom.data' using 1:2 with lines lw 1 title "(v2#branch*-1e+06)"
 set terminal push
 set terminal postscript eps color noenhanced
-set out 'simple_pmos_current_mirror_simulation_dc_analysis_zoom.eps'
+set out 'dc_zoom.eps'
 replot
 set term pop
 replot

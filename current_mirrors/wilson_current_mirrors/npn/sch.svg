@@ -12,8 +12,8 @@
    height="3.3294444cm"
    viewBox="0 0 17760.953 13108.049"
    id="svg2"
-   inkscape:version="0.91 r13725"
-   sodipodi:docname="wilson_current_mirror_npn.svg">
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   sodipodi:docname="sch.svg">
   <metadata
      id="metadata510">
     <rdf:RDF>
@@ -38,20 +38,20 @@
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:window-width="1920"
-     inkscape:window-height="1057"
+     inkscape:window-height="1030"
      id="namedview506"
      showgrid="false"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="4.317873"
-     inkscape:cx="69.711454"
-     inkscape:cy="59.376748"
-     inkscape:window-x="1280"
+     inkscape:zoom="3.0531973"
+     inkscape:cx="33.90941"
+     inkscape:cy="76.392932"
+     inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg2" />
+     inkscape:current-layer="g230" />
   <title
      id="title4">SVG Picture created as wilson_current_mirror_npn.svg date 2020/07/03 15:40:50 </title>
   <desc
@@ -119,50 +119,19 @@
          font-size="660"
          lengthAdjust="spacingAndGlyphs"
          id="text36"
-         style="font-size:660px;text-anchor:middle;opacity:0">I1</text>
+         style="font-size:660px;line-height:0%;text-anchor:middle;opacity:0"
+         transform="translate(-603.11331,313.61892)">I1</text>
       <path
-         d="m 45140,35460 0,-500"
+         d="m 44536.887,35773.619 v -500"
          id="path38"
          inkscape:connector-curvature="0" />
       <path
-         d="m 45640,35460 -290,0"
+         d="m 45036.887,35773.619 h -290"
          id="path40"
          inkscape:connector-curvature="0" />
       <path
-         d="m 45490,35460 0,-500 -40,70 -50,50 -50,20"
+         d="m 44886.887,35773.619 v -500 l -40,70 -50,50 -50,20"
          id="path42"
-         inkscape:connector-curvature="0" />
-      <text
-         x="45440"
-         y="36550"
-         textLength="1890"
-         font-size="660"
-         lengthAdjust="spacingAndGlyphs"
-         id="text44"
-         style="font-size:660px;text-anchor:middle;opacity:0">50uA</text>
-      <path
-         d="m 44880,36020 -240,0 -30,240 30,-20 50,-30 110,0 50,30 30,20 20,50 0,120 -20,40 -30,30 -50,20 -110,0 -50,-20 -30,-30"
-         id="path46"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 45210,36020 50,0 40,30 30,20 20,50 30,90 0,120 -30,100 -20,40 -30,30 -40,20 -50,0 -50,-20 -20,-30 -30,-40 -20,-100 0,-120 20,-90 30,-50 20,-20 50,-30"
-         id="path48"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 45800,36190 0,330"
-         id="path50"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 45590,36190 0,260 20,50 50,20 70,0 50,-20 20,-30"
-         id="path52"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 46020,36380 240,0"
-         id="path54"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 45970,36520 170,-500 160,500"
-         id="path56"
          inkscape:connector-curvature="0" />
     </g>
   </g>
@@ -241,21 +210,22 @@
          font-size="660"
          lengthAdjust="spacingAndGlyphs"
          id="text90"
-         style="font-size:660px;text-anchor:middle;opacity:0">Q1</text>
+         style="font-size:660px;line-height:0%;text-anchor:middle;opacity:0"
+         transform="translate(-24.124533,989.10583)">Q1</text>
       <path
-         d="m 42920,40760 -50,-20 -50,-50 -70,-70 -50,-30 -40,0"
+         d="m 42895.875,41749.106 -50,-20 -50,-50 -70,-70 -50,-30 h -40"
          id="path92"
          inkscape:connector-curvature="0" />
       <path
-         d="m 42680,40710 -50,-20 -50,-50 -20,-100 0,-160 20,-100 50,-40 50,-30 90,0 50,30 50,40 20,100 0,160 -20,100 -50,50 -50,20 -90,0"
+         d="m 42655.875,41699.106 -50,-20 -50,-50 -20,-100 v -160 l 20,-100 50,-40 50,-30 h 90 l 50,30 50,40 20,100 v 160 l -20,100 -50,50 -50,20 h -90"
          id="path94"
          inkscape:connector-curvature="0" />
       <path
-         d="m 43370,40710 -290,0"
+         d="m 43345.875,41699.106 h -290"
          id="path96"
          inkscape:connector-curvature="0" />
       <path
-         d="m 43230,40710 0,-500 -50,70 -50,50 -50,20"
+         d="m 43205.875,41699.106 v -500 l -50,70 -50,50 -50,20"
          id="path98"
          inkscape:connector-curvature="0" />
       <text
@@ -265,39 +235,7 @@
          font-size="660"
          lengthAdjust="spacingAndGlyphs"
          id="text100"
-         style="font-size:660px;text-anchor:middle;opacity:0">npn1</text>
-      <path
-         d="m 41750,42440 0,330"
-         id="path102"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 41750,42490 20,-30 50,-20 70,0 50,20 20,50 0,260"
-         id="path104"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 42200,42440 0,500"
-         id="path106"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 42200,42460 50,-20 90,0 50,20 20,30 30,40 0,150 -30,40 -20,30 -50,20 -90,0 -50,-20"
-         id="path108"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 42650,42440 0,330"
-         id="path110"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 42650,42490 30,-30 40,-20 80,0 40,20 30,50 0,260"
-         id="path112"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 43370,42770 -290,0"
-         id="path114"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 43220,42770 0,-500 -40,70 -50,50 -50,20"
-         id="path116"
-         inkscape:connector-curvature="0" />
+         style="font-size:660px;line-height:0%;text-anchor:middle;opacity:0">npn1</text>
     </g>
   </g>
   <g
@@ -367,7 +305,8 @@
     </g>
     <g
        style="fill:#008484;fill-opacity:0;stroke:#008484;stroke-width:60;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:1"
-       id="g148">
+       id="g148"
+       transform="translate(-48.249065,989.10583)">
       <text
          x="50030"
          y="40740"
@@ -375,58 +314,18 @@
          font-size="660"
          lengthAdjust="spacingAndGlyphs"
          id="text150"
-         style="font-size:660px;text-anchor:middle;opacity:0">Q2</text>
+         style="font-size:660px;line-height:0%;text-anchor:middle;opacity:0">Q2</text>
       <path
-         d="m 49980,40760 -50,-20 -50,-50 -70,-70 -50,-30 -40,0"
+         d="m 49980,40760 -50,-20 -50,-50 -70,-70 -50,-30 h -40"
          id="path152"
          inkscape:connector-curvature="0" />
       <path
-         d="m 49740,40710 -50,-20 -50,-50 -20,-100 0,-160 20,-100 50,-40 50,-30 90,0 50,30 50,40 20,100 0,160 -20,100 -50,50 -50,20 -90,0"
+         d="m 49740,40710 -50,-20 -50,-50 -20,-100 v -160 l 20,-100 50,-40 50,-30 h 90 l 50,30 50,40 20,100 v 160 l -20,100 -50,50 -50,20 h -90"
          id="path154"
          inkscape:connector-curvature="0" />
       <path
-         d="m 50140,40260 30,-20 50,-30 110,0 50,30 30,20 20,50 0,40 -20,80 -290,280 310,0"
+         d="m 50140,40260 30,-20 50,-30 h 110 l 50,30 30,20 20,50 v 40 l -20,80 -290,280 h 310"
          id="path156"
-         inkscape:connector-curvature="0" />
-      <text
-         x="50440"
-         y="42800"
-         textLength="1890"
-         font-size="660"
-         lengthAdjust="spacingAndGlyphs"
-         id="text158"
-         style="font-size:660px;text-anchor:middle;opacity:0">npn1</text>
-      <path
-         d="m 49640,42440 0,330"
-         id="path160"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 49640,42490 20,-30 50,-20 70,0 50,20 20,50 0,260"
-         id="path162"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 50090,42440 0,500"
-         id="path164"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 50090,42460 50,-20 90,0 50,20 20,30 30,40 0,150 -30,40 -20,30 -50,20 -90,0 -50,-20"
-         id="path166"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 50540,42440 0,330"
-         id="path168"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 50540,42490 30,-30 40,-20 80,0 40,20 30,50 0,260"
-         id="path170"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 51260,42770 -290,0"
-         id="path172"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 51110,42770 0,-500 -40,70 -50,50 -50,20"
-         id="path174"
          inkscape:connector-curvature="0" />
     </g>
   </g>
@@ -480,7 +379,7 @@
            font-size="660"
            lengthAdjust="spacingAndGlyphs"
            id="text198"
-           style="font-size:660px;text-anchor:middle;opacity:0">V+</text>
+           style="font-size:660px;line-height:0%;text-anchor:middle;opacity:0">V+</text>
       </g>
       <path
          d="m 36710,33960 500,-170 -500,-160"
@@ -557,34 +456,15 @@
          font-size="660"
          lengthAdjust="spacingAndGlyphs"
          id="text232"
-         style="font-size:660px;text-anchor:middle;opacity:0">V2</text>
+         style="font-size:660px;line-height:0%;text-anchor:middle;opacity:0"
+         transform="translate(272.93793,1228.2207)">V2</text>
       <path
-         d="m 53570,37960 170,500 160,-500"
+         d="m 53842.938,39188.221 170,500 160,-500"
          id="path234"
          inkscape:connector-curvature="0" />
       <path
-         d="m 54050,38010 20,-20 50,-30 120,0 40,30 30,20 20,50 0,40 -20,80 -290,280 310,0"
+         d="m 54322.938,39238.221 20,-20 50,-30 h 120 l 40,30 30,20 20,50 v 40 l -20,80 -290,280 h 310"
          id="path236"
-         inkscape:connector-curvature="0" />
-      <text
-         x="53980"
-         y="41050"
-         textLength="960"
-         font-size="660"
-         lengthAdjust="spacingAndGlyphs"
-         id="text238"
-         style="font-size:660px;text-anchor:middle;opacity:0">1V</text>
-      <path
-         d="m 53900,41020 -280,0"
-         id="path240"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 53760,41020 0,-500 -50,70 -40,50 -50,20"
-         id="path242"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 54050,40520 160,500 170,-500"
-         id="path244"
          inkscape:connector-curvature="0" />
     </g>
   </g>
@@ -649,34 +529,19 @@
          font-size="660"
          lengthAdjust="spacingAndGlyphs"
          id="text272"
-         style="font-size:660px;text-anchor:middle;opacity:0">V1</text>
+         style="font-size:660px;line-height:0%;text-anchor:middle;opacity:0"
+         transform="translate(168.87173,820.23411)">V1</text>
       <path
-         d="m 38110,37460 170,500 160,-500"
+         d="m 38278.872,38280.234 170,500 160,-500"
          id="path274"
          inkscape:connector-curvature="0" />
       <path
-         d="m 38870,37960 -280,0"
+         d="m 39038.872,38780.234 h -280"
          id="path276"
          inkscape:connector-curvature="0" />
       <path
-         d="m 38730,37960 0,-500 -50,70 -50,50 -40,20"
+         d="m 38898.872,38780.234 v -500 l -50,70 -50,50 -40,20"
          id="path278"
-         inkscape:connector-curvature="0" />
-      <text
-         x="38520"
-         y="39550"
-         textLength="960"
-         font-size="660"
-         lengthAdjust="spacingAndGlyphs"
-         id="text280"
-         style="font-size:660px;text-anchor:middle;opacity:0">5V</text>
-      <path
-         d="m 38420,39020 -240,0 -20,240 20,-20 50,-30 120,0 50,30 20,20 20,50 0,120 -20,40 -20,30 -50,20 -120,0 -50,-20 -20,-30"
-         id="path282"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 38590,39020 160,500 170,-500"
-         id="path284"
          inkscape:connector-curvature="0" />
     </g>
   </g>
@@ -790,58 +655,19 @@
          font-size="660"
          lengthAdjust="spacingAndGlyphs"
          id="text334"
-         style="font-size:660px;text-anchor:middle;opacity:0">Q3</text>
+         style="font-size:660px;line-height:0%;text-anchor:middle;opacity:0"
+         transform="translate(-96.49813,964.9813)">Q3</text>
       <path
-         d="m 49980,36760 -50,-20 -50,-50 -70,-70 -50,-30 -40,0"
+         d="m 49883.502,37724.981 -50,-20 -50,-50 -70,-70 -50,-30 h -40"
          id="path336"
          inkscape:connector-curvature="0" />
       <path
-         d="m 49740,36710 -50,-20 -50,-50 -20,-100 0,-160 20,-100 50,-40 50,-30 90,0 50,30 50,40 20,100 0,160 -20,100 -50,50 -50,20 -90,0"
+         d="m 49643.502,37674.981 -50,-20 -50,-50 -20,-100 v -160 l 20,-100 50,-40 50,-30 h 90 l 50,30 50,40 20,100 v 160 l -20,100 -50,50 -50,20 h -90"
          id="path338"
          inkscape:connector-curvature="0" />
       <path
-         d="m 50120,36210 310,0 -170,190 70,0 50,30 30,20 20,50 0,120 -20,40 -30,30 -50,20 -140,0 -50,-20 -20,-30"
+         d="m 50023.502,37174.981 h 310 l -170,190 h 70 l 50,30 30,20 20,50 v 120 l -20,40 -30,30 -50,20 h -140 l -50,-20 -20,-30"
          id="path340"
-         inkscape:connector-curvature="0" />
-      <text
-         x="50440"
-         y="38800"
-         textLength="1890"
-         font-size="660"
-         lengthAdjust="spacingAndGlyphs"
-         id="text342"
-         style="font-size:660px;text-anchor:middle;opacity:0">npn1</text>
-      <path
-         d="m 49640,38440 0,330"
-         id="path344"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 49640,38490 20,-30 50,-20 70,0 50,20 20,50 0,260"
-         id="path346"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 50090,38440 0,500"
-         id="path348"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 50090,38460 50,-20 90,0 50,20 20,30 30,40 0,150 -30,40 -20,30 -50,20 -90,0 -50,-20"
-         id="path350"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 50540,38440 0,330"
-         id="path352"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 50540,38490 30,-30 40,-20 80,0 40,20 30,50 0,260"
-         id="path354"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 51260,38770 -290,0"
-         id="path356"
-         inkscape:connector-curvature="0" />
-      <path
-         d="m 51110,38770 0,-500 -40,70 -50,50 -50,20"
-         id="path358"
          inkscape:connector-curvature="0" />
     </g>
   </g>
@@ -965,7 +791,7 @@
        font-size="800"
        lengthAdjust="spacingAndGlyphs"
        id="text416"
-       style="font-size:800px;text-anchor:start;opacity:0">n3</text>
+       style="font-size:800px;line-height:0%;text-anchor:start;opacity:0">n3</text>
     <path
        d="m 43670,37970 0,400"
        id="path418"
@@ -985,7 +811,7 @@
        font-size="800"
        lengthAdjust="spacingAndGlyphs"
        id="text424"
-       style="font-size:800px;text-anchor:start;opacity:0">n2</text>
+       style="font-size:800px;line-height:0%;text-anchor:start;opacity:0">n2</text>
     <path
        d="m 49670,34970 0,400"
        id="path426"
@@ -1005,7 +831,7 @@
        font-size="800"
        lengthAdjust="spacingAndGlyphs"
        id="text432"
-       style="font-size:800px;text-anchor:start;opacity:0">0</text>
+       style="font-size:800px;line-height:0%;text-anchor:start;opacity:0">0</text>
     <path
        d="m 46780,42770 60,0 60,30 30,20 20,60 30,120 0,140 -30,110 -20,60 -30,30 -60,30 -60,0 -50,-30 -30,-30 -30,-60 -30,-110 0,-140 30,-120 30,-60 30,-20 50,-30"
        id="path434"
@@ -1017,7 +843,7 @@
        font-size="800"
        lengthAdjust="spacingAndGlyphs"
        id="text436"
-       style="font-size:800px;text-anchor:start;opacity:0">n1</text>
+       style="font-size:800px;line-height:0%;text-anchor:start;opacity:0">n1</text>
     <path
        d="m 46670,38970 0,400"
        id="path438"
@@ -1041,7 +867,7 @@
        font-size="800"
        lengthAdjust="spacingAndGlyphs"
        id="text446"
-       style="font-size:800px;text-anchor:start;opacity:0">n_pos</text>
+       style="font-size:800px;line-height:0%;text-anchor:start;opacity:0">n_pos</text>
     <path
        d="m 40670,32970 0,400"
        id="path448"
