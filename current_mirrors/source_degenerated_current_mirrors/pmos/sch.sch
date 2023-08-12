@@ -1,0 +1,183 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Text Label 5400 4400 0    60   ~ 0
+n1
+Text Label 6000 4050 0    60   ~ 0
+n4
+$Comp
+L Sources_Power:V-PLUS-SUPPLY #PWR1
+U 1 1 5EE601A3
+P 4950 3750
+F 0 "#PWR1" H 4950 3900 50  0001 C BNN
+F 1 "V+" V 4950 3827 50  0000 L CNN
+F 2 "" H 4950 3750 60  0001 C CNN
+F 3 "" H 4950 3750 60  0001 C CNN
+	1    4950 3750
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Sources_Signal:I-IND-DC I1
+U 1 1 5EE64339
+P 5400 4600
+F 0 "I1" H 5250 4650 50  0000 L CNN
+F 1 "50uA" H 5150 4550 50  0001 L CNN
+F 2 "" H 5075 4600 60  0001 C CNN
+F 3 "" H 5075 4600 60  0001 C CNN
+	1    5400 4600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Transistors_MOSFET:PCH-ENH-4TERM-GENERIC M2
+U 1 1 5EE6F968
+P 5900 4200
+F 0 "M2" H 5900 4150 50  0000 R CNN
+F 1 "W=100u L=3u" H 6200 4300 50  0001 R CNN
+F 2 "" H 5580 4720 60  0001 C CNN
+F 3 "" H 6090 4285 60  0001 C CNN
+F 4 "d,g,s,b" H 6100 4275 60  0001 L CNN "Spice_Node_Sequence"
+	1    5900 4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Sources_Signal:V-IND-DC V2
+U 1 1 5EE7A4AB
+P 6300 4200
+F 0 "V2" H 6403 4246 50  0000 L CNN
+F 1 "0.65V" H 6403 4155 50  0001 L CNN
+F 2 "" H 6050 4200 60  0001 C CNN
+F 3 "" H 6050 4200 60  0001 C CNN
+	1    6300 4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Sources_Power:GND-Earth-REF #PWR2
+U 1 1 5EE858DA
+P 5400 4900
+F 0 "#PWR2" H 5375 4725 50  0001 C CNN
+F 1 "GND-Earth-REF" H 5400 4800 50  0001 C CNN
+F 2 "" H 5400 4900 50  0001 C CNN
+F 3 "" H 5400 4900 50  0001 C CNN
+	1    5400 4900
+	1    0    0    -1  
+$EndComp
+$Comp
+L RCL:R-AME R1
+U 1 1 5EFE6730
+P 5400 3900
+F 0 "R1" V 5400 3750 50  0000 L CNN
+F 1 "10kΩ" V 5400 3950 50  0001 L CNN
+F 2 "" H 5430 4050 20  0001 C CNN
+F 3 "" H 5420 3900 60  0000 C CNN
+	1    5400 3900
+	0    1    1    0   
+$EndComp
+$Comp
+L Sources_Signal:V-IND-DC V1
+U 1 1 5EE624D9
+P 5050 4350
+F 0 "V1" H 5153 4396 50  0000 L CNN
+F 1 "1.3V" H 5153 4305 50  0001 L CNN
+F 2 "" H 4800 4350 60  0001 C CNN
+F 3 "" H 4800 4350 60  0001 C CNN
+	1    5050 4350
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	5400 4200 5300 4200
+Wire Wire Line
+	6000 4200 6100 4200
+Wire Wire Line
+	6000 4000 6000 4100
+Wire Wire Line
+	5400 4300 5400 4400
+Wire Wire Line
+	5700 4400 5700 4200
+Connection ~ 5700 4200
+Wire Wire Line
+	5550 4200 5700 4200
+Wire Wire Line
+	5700 4200 5850 4200
+Wire Wire Line
+	5400 4400 5700 4400
+Wire Wire Line
+	5400 3750 5400 3800
+Text Label 6000 4200 0    50   ~ 0
+vp
+Wire Wire Line
+	6300 3750 6300 4100
+Wire Wire Line
+	5050 4250 5050 3750
+Wire Wire Line
+	5050 4450 5050 4800
+$Comp
+L Transistors_MOSFET:PCH-ENH-4TERM-GENERIC M1
+U 1 1 5EE6C772
+P 5500 4200
+F 0 "M1" H 5500 4150 50  0000 R CNN
+F 1 "W=100u L=3u" H 5950 4300 50  0001 R CNN
+F 2 "" H 5180 4720 60  0001 C CNN
+F 3 "" H 5690 4285 60  0001 C CNN
+F 4 "d,g,s,b" H 5700 4275 60  0001 L CNN "Spice_Node_Sequence"
+	1    5500 4200
+	-1   0    0    -1  
+$EndComp
+Text Label 5300 4200 0    50   ~ 0
+vp
+Text Label 5100 3750 0    60   ~ 0
+vp
+Wire Wire Line
+	5400 4000 5400 4100
+$Comp
+L RCL:R-AME R2
+U 1 1 64D21651
+P 6000 3900
+F 0 "R2" V 6000 3750 50  0000 L CNN
+F 1 "10kΩ" V 6000 3950 50  0001 L CNN
+F 2 "" H 6030 4050 20  0001 C CNN
+F 3 "" H 6020 3900 60  0000 C CNN
+	1    6000 3900
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6000 3800 6000 3750
+Wire Wire Line
+	6000 3750 5400 3750
+Connection ~ 5050 3750
+Connection ~ 5400 3750
+Wire Wire Line
+	5400 3750 5050 3750
+Wire Wire Line
+	5050 4800 5400 4800
+Wire Wire Line
+	5400 4800 5400 4700
+Wire Wire Line
+	5400 4500 5400 4400
+Connection ~ 5400 4400
+Wire Wire Line
+	6000 4300 6000 4400
+Wire Wire Line
+	6000 4400 6300 4400
+Wire Wire Line
+	6300 4300 6300 4400
+Wire Wire Line
+	6300 3750 6000 3750
+Connection ~ 6000 3750
+Text Label 5400 4050 0    60   ~ 0
+n3
+Text Label 6000 4400 0    60   ~ 0
+n2
+Connection ~ 5400 4800
+$EndSCHEMATC

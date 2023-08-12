@@ -1,0 +1,9 @@
+device  m2          m1
+ model  pmos        pmos
+    gm  442.69 uS   442.69 uS
+   rds  944.9  kR   944.9  kR
+    id  50.0   uA   50.0   uA
+   vgs  0.5600 V    0.5600 V
+   vds  0.5600 V    0.5600 V
+   vth  0.3689 V    0.3689 V
+ vdsat  0.2036 V    0.2036 V
