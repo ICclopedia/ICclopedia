@@ -1,0 +1,10 @@
+.title KiCad schematic
+I1 /n3 /0 50uA
+V2 /vp /n2 0.65V
+R1 /n1 /n3 10kΩ
+V1 /vp /0 1.3V
+M1 /n4 /n1 /vp /vp W=220u L=3u
+M2 /n5 /n1 /vp /vp W=220u L=3u
+M3 /n2 /n3 /n5 /vp W=110u L=0.35u
+M4 /n1 /n3 /n4 /vp W=110u L=0.35u
+.end
