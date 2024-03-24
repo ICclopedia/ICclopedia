@@ -1,0 +1,14 @@
+*
+
+.subckt sch
+
+
+M1 NC-M1-0 NC-M1-1 NC-M1-2 NC-M1-3 W=100u L=3u
+M4 NC-M4-0 NC-M4-1 NC-M4-2 NC-M4-3 W=50u L=0.35u
+I1 /n1 /0 DC 50u 
+V1 /vp /0 DC 1.3 
+M2 NC-M2-0 NC-M2-1 NC-M2-2 NC-M2-3 W=100u L=3u
+M3 NC-M3-0 NC-M3-1 NC-M3-2 NC-M3-3 W=50u L=0.35u
+V2 /vp /n2 DC 0.65 
+
+.ends

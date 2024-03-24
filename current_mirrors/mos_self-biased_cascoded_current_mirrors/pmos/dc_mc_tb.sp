@@ -44,11 +44,11 @@ MC TB
     $ as we are operating at DC, mainly: vth0, u0, toxm (for bsim4), wint and lint.
     $ Note: you can use the "show" command to display all parsed devices
     $ and models; this is extremely helpful.
-    let nmos_vth0 = @nmos[vth0]
-    let nmos_u0 = @nmos[u0]
-    let nmos_toxm = @nmos[toxm]
-    let nmos_wint = @nmos[wint]
-    let nmos_lint = @nmos[lint]
+    let pmos_vth0 = @pmos[vth0]
+    let pmos_u0 = @pmos[u0]
+    let pmos_toxm = @pmos[toxm]
+    let pmos_wint = @pmos[wint]
+    let pmos_lint = @pmos[lint]
 
     $ Create our output plot (collection of vectors which store our simulation data)
     $ first create a new plot and make it the current plot.
@@ -78,11 +78,11 @@ MC TB
         $ We need to alter the parameter of each transistor independently.
         if current_run > 0
             $ XM1
-            altermod @nmos[vth0] = gauss(nmos_vth0, $relative_variation, $sigma)
-            altermod @nmos[u0]   = gauss(nmos_u0  , $relative_variation, $sigma)
-            altermod @nmos[toxm]  = gauss(nmos_toxm , $relative_variation, $sigma)
-            altermod @nmos[wint]  = gauss(nmos_wint , $relative_variation, $sigma)
-            altermod @nmos[lint]  = gauss(nmos_lint , $relative_variation, $sigma)
+            altermod @pmos[vth0] = gauss(pmos_vth0, $relative_variation, $sigma)
+            altermod @pmos[u0]   = gauss(pmos_u0  , $relative_variation, $sigma)
+            altermod @pmos[toxm]  = gauss(pmos_toxm , $relative_variation, $sigma)
+            altermod @pmos[wint]  = gauss(pmos_wint , $relative_variation, $sigma)
+            altermod @pmos[lint]  = gauss(pmos_lint , $relative_variation, $sigma)
         end
 
         $ Run our DC analysis with the transistors with modified parameters
@@ -122,7 +122,7 @@ MC TB
     set ylabel = 'Current Output (uA)'
     set yhigh = 50.5
     set ylow = 48.5
-    set filename = {$generic_prefix}{'.ps'}
+    set filename = {$generic_prefix}{'.eps'}
     plot all ylimit $ylow $yhigh title $title xlabel $xlabel ylabel $ylabel 
     hardcopy $filename all ylimit $ylow $yhigh title $title xlabel $xlabel ylabel $ylabel 
     
@@ -135,6 +135,7 @@ MC TB
     set filetype=ascii
     set filename = {$generic_prefix}{'.raw'}
     write $filename
+
     cd ..
 
 .ENDC

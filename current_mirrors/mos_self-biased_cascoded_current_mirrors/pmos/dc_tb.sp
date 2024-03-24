@@ -36,10 +36,10 @@ setscale n2 ; set our plot scale (i.e. x axis to the n2 vector)
 setcs xlabel = 'Drain Voltage (V)'
 setcs ylabel = 'Drain Current Output (uA)'
 set xdel = 0.10
-set xlow = 0.2
+set xlow = 0
 set xhigh = 1.3 
 set ylow =48.8
-set yhigh = 50.2
+set yhigh = 50.5
 set gnuplot_terminal = 'eps'
 
 setcs title = 'DC Analysis: Drain Current Output vs Drain Voltage' 
@@ -56,7 +56,6 @@ set filetype=ascii
 set filename = {$generic_prefix}{'.raw'}
 write $filename
 
-* Return to sim directory
 cd ..
 
 .ENDC
